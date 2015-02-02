@@ -2,28 +2,33 @@
 //  Rar.swift
 //  LUErar2
 //
-//  Created by Mark Larah on 02/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 02/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
 
 import Foundation
 
 class Rar: Operation {
         
-    init(files: [String]) {
-        super.init()
-
+    init(files: [String], password: String?) {
+        super.init(files: files)
+        
         executable = "\(currentExecutionPath)/Contents/Resources/rar"
         
         args = [
             "a",
-            "-ep1"
+            "-ep1",
+            "-y"
         ]
+        
+        if password != nil {
+            args.append("-hp\(password!)")
+        }
         
         var randomFileName = NSUUID().UUIDString
         randomFileName = randomFileName.substringToIndex(advance(randomFileName.startIndex, 8))
         randomFileName += ".rar"
-        args.append(randomFileName) // file name
+        args.append("\(files[0].stringByDeletingLastPathComponent)/\(randomFileName)") // file name
         
         args += files // files
         
@@ -66,4 +71,7 @@ class Rar: Operation {
         parseFiles(data)
     }
     
+    override func errorDataAvailable (data: String) {
+        
+    }
 }

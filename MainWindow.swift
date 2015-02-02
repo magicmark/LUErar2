@@ -21,11 +21,17 @@ protocol NavigationDelegate {
     func goHome ()
 }
 
+protocol SelectedPasswordDelegate {
+    func choose(password: String)
+    func cancel()
+}
+
 class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
     
     // Child view controllers
     var dragView    = DragView(nibName: "DragView", bundle: nil)!
     var archiver    = ArchivingViewController(nibName: "ArchivingViewController", bundle: nil)!
+
     
     var currSubviewPointer: NSView?
     
@@ -52,23 +58,25 @@ class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
         }
     }
     
+    func startArchiving () {
+        // show before we start the archving process? idk
+        window?.contentView.replaceSubview(dragView.view, with: archiver.view)
+        currSubviewPointer = archiver.view
+        archiver.checkForFiles()
+    }
+    
+    // filesDraggedDelegate
+    
     func filesDragged(sender: NSDraggingInfo?) {
-
+        
         // Was going to use enumerateDraggingItemsWithOptions, but I decided I didn't want to kill myself. Swift still isn't great...
         var pasteboard = sender!.draggingPasteboard()
         var allFiles: [String] = pasteboard.propertyListForType(NSFilenamesPboardType) as [String]
         
-        // Probably a better way of doing this, idk this seems ok
-        var rarTypeRegex = NSRegularExpression(pattern: "(\\.rar)$", options: NSRegularExpressionOptions.AnchorsMatchLines, error: nil)
-        var result = rarTypeRegex!.matchesInString(allFiles[0], options: nil, range:NSMakeRange(0, countElements(allFiles[0])))
-
-        let type: ArchiveType = (result.count == 1) ? .Unrar : .Rar
-        archiver.start(type, files: allFiles)
-        
-        // show before we start the archving process? idk
-        window?.contentView.replaceSubview(dragView.view, with: archiver.view)
-        currSubviewPointer = archiver.view
+        DraggedFiles.sharedInstance.addFiles(allFiles)
+        startArchiving()
         
     }
     
+
 }

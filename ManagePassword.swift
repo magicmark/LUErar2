@@ -2,8 +2,8 @@
 //  ManagePassword.swift
 //  LUErar2
 //
-//  Created by Mark Larah on 02/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 02/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
 
 import Cocoa

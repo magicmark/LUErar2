@@ -68,10 +68,27 @@ class PasswordManager {
         return true
     }
     
+    func deletePassword (position: Int) -> Bool {
+        passwords.removeAtIndex(position)
+        writePasswordsToFile()
+        return true
+    }
+    
     func writePasswordsToFile () {
         let implodedPasswords = "\n".join(passwords) // should the join really just be \n? Or if there a special NSCharacter set or something to ensure this works universally
         // TODO: handle the error if any properly and inform user.
         // TODO: Make this function return true/false with success of writing to file, inform addPassword function
         implodedPasswords.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
     }
+
+    // if attempt = 0, it tried without password
+    // 1-n = try from passowrd list
+    // n+ = return nil, ask for password
+    func getPasswordForAttempt(attempt: Int) -> String? {
+        if passwords.count > attempt - 1 {
+            return passwords[attempt - 1]
+        }
+        return nil
+    }
+    
 }

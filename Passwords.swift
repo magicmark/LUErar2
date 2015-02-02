@@ -2,8 +2,8 @@
 //  Passwords.swift
 //  LUErar2
 //
-//  Created by Mark Larah on 02/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 02/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
 
 import Cocoa
@@ -15,6 +15,8 @@ protocol PasswordManagerDelegate {
 
 class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, PasswordManagerDelegate {
 
+    // TODO: Add a 'make default' button to move selected password to top of the list
+    
     var managePasswordWindow = ManagePassword(windowNibName: "ManagePassword")
 
     
@@ -52,11 +54,25 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
     @IBAction func editPassword(sender: AnyObject) {
         managePasswordWindow.beginEditPassword(tableView.selectedRow, currentPassword: PasswordManager.sharedInstance.passwords[tableView.selectedRow])
     }
+    
+    @IBAction func deletePassword(sender: AnyObject) {
+        deletedPassword(tableView.selectedRow)
+    }
 
+    func deletePasswordConfirmation (passwordToDelete: String) -> Bool {
+        let popup = NSAlert()
+        popup.addButtonWithTitle("Yes")
+        popup.addButtonWithTitle("No")
+        popup.messageText = "Are you sure you want to delete the password '\(passwordToDelete)'?"
+        popup.alertStyle = .CriticalAlertStyle
+        return (popup.runModal() == NSAlertFirstButtonReturn)
+    }
+    
     func showAddedPasswordConfirmation () {
         let popup = NSAlert()
         popup.addButtonWithTitle("Gotcha")
         popup.messageText = "Password has been added."
+        popup.alertStyle = .InformationalAlertStyle
         popup.runModal()
     }
 
@@ -64,8 +80,18 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
         let popup = NSAlert()
         popup.addButtonWithTitle("Gotcha")
         popup.messageText = "Password has been changed."
+        popup.alertStyle = .InformationalAlertStyle
         popup.runModal()
     }
+
+    func showDeletedPasswordConfirmation () {
+        let popup = NSAlert()
+        popup.addButtonWithTitle("Gotcha")
+        popup.messageText = "Password has been deleted."
+        popup.alertStyle = .InformationalAlertStyle
+        popup.runModal()
+    }
+
     
     func showDidNotAddPasswordConfirmation () {
         // or maybe the file couldn't be written or something
@@ -74,7 +100,18 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
         popup.addButtonWithTitle("Gotcha")
         popup.messageText = "Password was not added."
         popup.informativeText = "It's already in the list, foo"
+        popup.alertStyle = .WarningAlertStyle
         popup.runModal()
+    }
+    
+    
+    func deletedPassword(position: Int) {
+        if deletePasswordConfirmation(PasswordManager.sharedInstance.passwords[position]) {
+            if PasswordManager.sharedInstance.deletePassword(position) {
+                tableView.reloadData()
+                showDeletedPasswordConfirmation()
+            }
+        }
     }
     
     // PasswordManagerDelegate

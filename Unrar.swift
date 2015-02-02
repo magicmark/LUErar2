@@ -2,24 +2,30 @@
 //  Unrar.swift
 //  LUErar2
 //
-//  Created by Mark Larah on 02/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 02/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
 
 import Foundation
 
 class Unrar: Operation {
-    
-    init(files: [String]) {
-        super.init()
+        
+    init(file: String, withPassword: String?) {
+        super.init(files: [file])
         
         executable = "\(currentExecutionPath)/Contents/Resources/unrar"
         
         args = [
-            "e"
+            "e",
+            "-y",
+            (withPassword != nil) ? "-p\(withPassword!)" : "-p-",
+            file,
+            file.stringByDeletingLastPathComponent
         ]
         
     }
+    
+    var badPassword = false
     
     func parsePercentageDone (data: String) {
         // Probably a better way of doing this, idk this seems ok
@@ -47,15 +53,34 @@ class Unrar: Operation {
             let url = NSURL(fileURLWithPath: file)
             let basename = url?.lastPathComponent
             if basename != nil {
-                delegate?.setProgressText("Adding: \(basename!)")
+                delegate?.setProgressText("Extracting: \(basename!)")
             }
         }
     }
     
+    func parseCheckPassword (data: String) {
+//        println("dsfdsf")
+    }
+    
     override func dataAvailable (data: String) {
-        println(data)
+        println("all good- \(data)")
         parsePercentageDone(data)
         parseFiles(data)
+        parseCheckPassword(data)
+    }
+    
+    override func errorDataAvailable(data: String) {
+        if data.rangeOfString("Checksum error in the encrypted file") != nil {
+            badPassword = true
+        }
+    }
+    
+    override func taskEnded() {
+        if badPassword {
+            delegate?.reattempt()
+        } else {
+            delegate?.complete()
+        }
     }
     
 }
