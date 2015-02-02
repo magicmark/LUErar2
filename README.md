@@ -11,4 +11,4 @@ To build, you need to download the rar/unrar executables from here: http://www.r
 
 ### To-Do
 Lots. Check the TODO comments.
-
+Also, tidy up the project structure.
