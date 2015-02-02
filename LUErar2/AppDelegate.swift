@@ -2,25 +2,35 @@
 //  AppDelegate.swift
 //  LUErar2
 //
-//  Created by Mark Larah on 01/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 01/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
+
+
+// download rar stuff from http://www.rarlab.com
 
 import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
-
+//    var passwords = [String]()
+    
+    var window = MainWindow(windowNibName: "MainWindow")
+    var settings = Settings(windowNibName: "Settings")
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        window.showWindow(self)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+
+    @IBAction func openPreferences (sender: AnyObject) {
+        settings.showWindow(self)
+    }
+
 
     // MARK: - Core Data stack
 

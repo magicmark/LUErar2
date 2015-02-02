@@ -7,11 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D809CF61A7FEDC400593E17 /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D809CF51A7FEDC400593E17 /* PasswordManager.swift */; };
+		4D8402F91A7F40650060691E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DEBB1A7EA15C00654A13 /* MainMenu.xib */; };
+		4D8402FB1A7F41AC0060691E /* Unrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8402FA1A7F41AC0060691E /* Unrar.swift */; };
+		4D8403021A7F48E90060691E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8403001A7F48E90060691E /* Settings.swift */; };
+		4D8403031A7F48E90060691E /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8403011A7F48E90060691E /* Settings.xib */; };
+		4D8403061A7F4A600060691E /* Passwords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8403041A7F4A600060691E /* Passwords.swift */; };
+		4D8403071A7F4A600060691E /* Passwords.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8403051A7F4A600060691E /* Passwords.xib */; };
+		4D84030E1A7F56BE0060691E /* passwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D84030D1A7F56BE0060691E /* passwords.txt */; };
+		4D8403111A7FE0F60060691E /* ManagePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84030F1A7FE0F60060691E /* ManagePassword.swift */; };
+		4D8403121A7FE0F60060691E /* ManagePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8403101A7FE0F60060691E /* ManagePassword.xib */; };
+		4DCEB4251A7EB696001A78A2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB4241A7EB696001A78A2 /* Shell.swift */; };
+		4DCEB4281A7EBEC6001A78A2 /* ArchivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */; };
+		4DCEB4291A7EBEC6001A78A2 /* ArchivingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */; };
+		4DCEB4301A7F0595001A78A2 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB42E1A7F0595001A78A2 /* DragView.swift */; };
+		4DCEB4331A7F090F001A78A2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEB4321A7F090F001A78A2 /* MainWindow.xib */; };
+		4DCEB4381A7F1C8D001A78A2 /* Rar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB4371A7F1C8D001A78A2 /* Rar.swift */; };
+		4DCEB43A1A7F2714001A78A2 /* testOutput in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEB4391A7F2714001A78A2 /* testOutput */; };
 		4DD4DEB51A7EA15C00654A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DEB41A7EA15C00654A13 /* AppDelegate.swift */; };
 		4DD4DEB81A7EA15C00654A13 /* LUErar2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DEB61A7EA15C00654A13 /* LUErar2.xcdatamodeld */; };
 		4DD4DEBA1A7EA15C00654A13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DEB91A7EA15C00654A13 /* Images.xcassets */; };
-		4DD4DEBD1A7EA15C00654A13 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DEBB1A7EA15C00654A13 /* MainMenu.xib */; };
 		4DD4DEC91A7EA15C00654A13 /* LUErar2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DEC81A7EA15C00654A13 /* LUErar2Tests.swift */; };
+		4DD4DED41A7EA1E800654A13 /* rar in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DED21A7EA1E800654A13 /* rar */; };
+		4DD4DED51A7EA1E800654A13 /* unrar in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DED31A7EA1E800654A13 /* unrar */; };
+		4DD4DEDA1A7EA2BB00654A13 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DED81A7EA2BB00654A13 /* MainWindow.swift */; };
+		4DD4DEDB1A7EA2BB00654A13 /* DragView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD4DED91A7EA2BB00654A13 /* DragView.xib */; };
+		4DD4DEDD1A7EAA6100654A13 /* Dropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DEDC1A7EAA6100654A13 /* Dropper.swift */; };
+		4DD4DEDF1A7EAF3C00654A13 /* FancyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4DEDE1A7EAF3C00654A13 /* FancyAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +47,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D809CF51A7FEDC400593E17 /* PasswordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
+		4D8402FA1A7F41AC0060691E /* Unrar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unrar.swift; sourceTree = "<group>"; };
+		4D8403001A7F48E90060691E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		4D8403011A7F48E90060691E /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
+		4D8403041A7F4A600060691E /* Passwords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passwords.swift; sourceTree = "<group>"; };
+		4D8403051A7F4A600060691E /* Passwords.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Passwords.xib; sourceTree = "<group>"; };
+		4D84030D1A7F56BE0060691E /* passwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = passwords.txt; sourceTree = "<group>"; };
+		4D84030F1A7FE0F60060691E /* ManagePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePassword.swift; sourceTree = "<group>"; };
+		4D8403101A7FE0F60060691E /* ManagePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagePassword.xib; sourceTree = "<group>"; };
+		4DCEB4241A7EB696001A78A2 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivingViewController.swift; sourceTree = "<group>"; };
+		4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchivingViewController.xib; sourceTree = "<group>"; };
+		4DCEB42E1A7F0595001A78A2 /* DragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
+		4DCEB4321A7F090F001A78A2 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		4DCEB4371A7F1C8D001A78A2 /* Rar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rar.swift; sourceTree = "<group>"; };
+		4DCEB4391A7F2714001A78A2 /* testOutput */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = testOutput; sourceTree = "<group>"; };
 		4DD4DEAF1A7EA15C00654A13 /* LUErar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LUErar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD4DEB31A7EA15C00654A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DD4DEB41A7EA15C00654A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +72,12 @@
 		4DD4DEC21A7EA15C00654A13 /* LUErar2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LUErar2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD4DEC71A7EA15C00654A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DD4DEC81A7EA15C00654A13 /* LUErar2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUErar2Tests.swift; sourceTree = "<group>"; };
+		4DD4DED21A7EA1E800654A13 /* rar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = rar; sourceTree = "<group>"; };
+		4DD4DED31A7EA1E800654A13 /* unrar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = unrar; sourceTree = "<group>"; };
+		4DD4DED81A7EA2BB00654A13 /* MainWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		4DD4DED91A7EA2BB00654A13 /* DragView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DragView.xib; sourceTree = "<group>"; };
+		4DD4DEDC1A7EAA6100654A13 /* Dropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dropper.swift; sourceTree = "<group>"; };
+		4DD4DEDE1A7EAF3C00654A13 /* FancyAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +98,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D8403081A7F4A630060691E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4D84030C1A7F4ABF0060691E /* Views */,
+				4D84030B1A7F4AB60060691E /* View Controllers */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4D84030A1A7F4A8A0060691E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4DCEB4351A7F1BA7001A78A2 /* Views */,
+				4DCEB4341A7F1B94001A78A2 /* View Controllers */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		4D84030B1A7F4AB60060691E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D84030F1A7FE0F60060691E /* ManagePassword.swift */,
+				4D8403041A7F4A600060691E /* Passwords.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4D84030C1A7F4ABF0060691E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D8403051A7F4A600060691E /* Passwords.xib */,
+				4D8403101A7FE0F60060691E /* ManagePassword.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4DCEB4341A7F1B94001A78A2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D8403001A7F48E90060691E /* Settings.swift */,
+				4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */,
+				4DD4DEDC1A7EAA6100654A13 /* Dropper.swift */,
+				4DD4DED81A7EA2BB00654A13 /* MainWindow.swift */,
+				4DCEB42E1A7F0595001A78A2 /* DragView.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		4DCEB4351A7F1BA7001A78A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D8403011A7F48E90060691E /* Settings.xib */,
+				4DCEB4321A7F090F001A78A2 /* MainWindow.xib */,
+				4DD4DED91A7EA2BB00654A13 /* DragView.xib */,
+				4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4DCEB4361A7F1C7D001A78A2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4D809CF51A7FEDC400593E17 /* PasswordManager.swift */,
+				4DCEB4241A7EB696001A78A2 /* Shell.swift */,
+				4DCEB4371A7F1C8D001A78A2 /* Rar.swift */,
+				4D8402FA1A7F41AC0060691E /* Unrar.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		4DD4DEA61A7EA15C00654A13 = {
 			isa = PBXGroup;
 			children = (
+				4DCEB4361A7F1C7D001A78A2 /* Classes */,
+				4D8403081A7F4A630060691E /* Settings */,
+				4D84030A1A7F4A8A0060691E /* Main */,
+				4DD4DEDE1A7EAF3C00654A13 /* FancyAnimation.swift */,
+				4DD4DED21A7EA1E800654A13 /* rar */,
+				4D84030D1A7F56BE0060691E /* passwords.txt */,
+				4DCEB4391A7F2714001A78A2 /* testOutput */,
+				4DD4DED31A7EA1E800654A13 /* unrar */,
 				4DD4DEB11A7EA15C00654A13 /* LUErar2 */,
 				4DD4DEC51A7EA15C00654A13 /* LUErar2Tests */,
 				4DD4DEB01A7EA15C00654A13 /* Products */,
@@ -189,8 +311,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8403031A7F48E90060691E /* Settings.xib in Resources */,
+				4D8402F91A7F40650060691E /* MainMenu.xib in Resources */,
+				4DCEB4331A7F090F001A78A2 /* MainWindow.xib in Resources */,
+				4DD4DED41A7EA1E800654A13 /* rar in Resources */,
+				4DD4DEDB1A7EA2BB00654A13 /* DragView.xib in Resources */,
+				4DCEB43A1A7F2714001A78A2 /* testOutput in Resources */,
+				4D84030E1A7F56BE0060691E /* passwords.txt in Resources */,
+				4D8403071A7F4A600060691E /* Passwords.xib in Resources */,
+				4DCEB4291A7EBEC6001A78A2 /* ArchivingViewController.xib in Resources */,
+				4DD4DED51A7EA1E800654A13 /* unrar in Resources */,
 				4DD4DEBA1A7EA15C00654A13 /* Images.xcassets in Resources */,
-				4DD4DEBD1A7EA15C00654A13 /* MainMenu.xib in Resources */,
+				4D8403121A7FE0F60060691E /* ManagePassword.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +340,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8403061A7F4A600060691E /* Passwords.swift in Sources */,
+				4D8402FB1A7F41AC0060691E /* Unrar.swift in Sources */,
+				4DCEB4251A7EB696001A78A2 /* Shell.swift in Sources */,
+				4DD4DEDD1A7EAA6100654A13 /* Dropper.swift in Sources */,
+				4DCEB4301A7F0595001A78A2 /* DragView.swift in Sources */,
+				4DCEB4281A7EBEC6001A78A2 /* ArchivingViewController.swift in Sources */,
 				4DD4DEB51A7EA15C00654A13 /* AppDelegate.swift in Sources */,
+				4D8403111A7FE0F60060691E /* ManagePassword.swift in Sources */,
+				4DD4DEDA1A7EA2BB00654A13 /* MainWindow.swift in Sources */,
 				4DD4DEB81A7EA15C00654A13 /* LUErar2.xcdatamodeld in Sources */,
+				4D809CF61A7FEDC400593E17 /* PasswordManager.swift in Sources */,
+				4DD4DEDF1A7EAF3C00654A13 /* FancyAnimation.swift in Sources */,
+				4D8403021A7F48E90060691E /* Settings.swift in Sources */,
+				4DCEB4381A7F1C8D001A78A2 /* Rar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +541,7 @@
 				4DD4DECE1A7EA15C00654A13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DD4DECF1A7EA15C00654A13 /* Build configuration list for PBXNativeTarget "LUErar2Tests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +550,7 @@
 				4DD4DED11A7EA15C00654A13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -2,8 +2,8 @@
 //  LUErar2Tests.swift
 //  LUErar2Tests
 //
-//  Created by Mark Larah on 01/02/2015.
-//  Copyright (c) 2015 Kalphak. All rights reserved.
+//  Created by Mark on 01/02/2015.
+//  Copyright (c) 2015 Mark. All rights reserved.
 //
 
 import Cocoa
