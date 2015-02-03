@@ -49,21 +49,23 @@ class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
     }
     
     func goHome () {
-        if currSubviewPointer == nil {
-            window?.contentView.addSubview(dragView.view)
-        } else {
-            //window?.contentView.replaceSubview(currSubviewPointer!, with: dragView.view) because this dpesn't work for some reason. Get a resizing error :S
-            currSubviewPointer!.removeFromSuperviewWithoutNeedingDisplay()
-            window?.contentView.addSubview(dragView.view)
-        }
-        currSubviewPointer = dragView.view
+        dispatch_async(dispatch_get_main_queue(), {
+            if self.currSubviewPointer == nil {
+                self.window?.contentView.addSubview(self.dragView.view)
+            } else {
+                self.window?.contentView.replaceSubview(self.currSubviewPointer!, with: self.dragView.view)
+            }
+            self.currSubviewPointer = self.dragView.view
+        })
     }
     
     func startArchiving () {
         // show before we start the archving process? idk
-        window?.contentView.replaceSubview(currSubviewPointer!, with: archiver.view)
-        currSubviewPointer = archiver.view
-        archiver.checkForFiles()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.window?.contentView.replaceSubview(self.currSubviewPointer!, with: self.archiver.view)
+            self.currSubviewPointer = self.archiver.view
+            self.archiver.checkForFiles()
+        })
     }
     
     // filesDraggedDelegate

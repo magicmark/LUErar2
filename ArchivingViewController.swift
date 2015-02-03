@@ -61,7 +61,7 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         // use usesThreadedAnimation?? TODO: find this out
         progressIndicator?.usesThreadedAnimation = true
         askPassword.delegate = self
-        askPassword.delegate = self
+        givePassword.delegate = self
     }
     
     override func viewWillAppear() {

@@ -38,7 +38,9 @@ class GivePassword: NSWindowController {
 
     func launchSheet () {
         let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
-        NSApp.beginSheet(self.window!, modalForWindow: appDelegate.window.window!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+        dispatch_async(dispatch_get_main_queue(), {
+            NSApp.beginSheet(self.window!, modalForWindow: appDelegate.window.window!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+        })
     }
     
 }
