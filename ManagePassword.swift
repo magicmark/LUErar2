@@ -28,6 +28,9 @@ class ManagePassword: NSWindowController {
         if titleToSet != nil {
             setActionButtonTitle(titleToSet!)
         }
+        
+        passwordInput?.focusRingType = .None
+
     
     }
     func setActionButtonTitle(title: String) {
@@ -38,7 +41,7 @@ class ManagePassword: NSWindowController {
         }
     }
     
-    func launchSheet () {
+    private func launchSheet () {
         let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
         NSApp.beginSheet(self.window!, modalForWindow: appDelegate.settings.window!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
     }

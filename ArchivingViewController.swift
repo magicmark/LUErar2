@@ -34,13 +34,16 @@ class CurrentRun {
     }
 }
 
-class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPasswordDelegate {
+class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPasswordDelegate, AskForPasswordDelegate {
 
     var currentRun: CurrentRun?
 
     var acceptNewFiles = false
     // TODO: Move this and above maybe to currentOperation
     var filesToRarWithPassword: [String]?
+    var filesToUnrarWithPassword: [String]? // TODO: combine these variables
+    var attemptNumber = 0
+    
     
     var navDelegate: NavigationDelegate?
     
@@ -49,12 +52,15 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     @IBOutlet weak var progressIndicator: NSProgressIndicator?
     
     // Windows
+    // TODO: rename these better so they're less confusing
     var askPassword = SelectPassword(windowNibName: "SelectPassword")
+    var givePassword = GivePassword(windowNibName: "GivePassword")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // use usesThreadedAnimation?? TODO: find this out
         progressIndicator?.usesThreadedAnimation = true
+        askPassword.delegate = self
         askPassword.delegate = self
     }
     
@@ -108,7 +114,7 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
                 unrarOp.delegate = self
                 currentRun = CurrentRun(operation: unrarOp, type: .Unrar, attempt: attempt)
             }
-
+            
         }
     }
  
@@ -147,7 +153,16 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         let password = PasswordManager.sharedInstance.getPasswordForAttempt(attempt)
         if password != nil {
             start(.Unrar, files: files, attempt: attempt, password: password!)
+        } else {
+            attemptNumber = attempt
+            filesToUnrarWithPassword = files
+            askPasswordForUnrar()
         }
+    }
+    
+    
+    func askPasswordForUnrar () {
+        givePassword.launchSheet()
     }
     
     // SelectedPasswordDelegate
@@ -164,4 +179,15 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         // idk should maybe do something here
     }
     
+    // AskForPasswordDelegate
+    
+    func cancelUnarchiving () {
+        
+    }
+    
+    func passwordGiven (password: String) {
+        if filesToUnrarWithPassword != nil {
+            start(.Unrar, files: filesToUnrarWithPassword!, attempt: attemptNumber, password: password)
+        }
+    }
 }

@@ -14,8 +14,6 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-//    var passwords = [String]()
-    
     var window = MainWindow(windowNibName: "MainWindow")
     var settings = Settings(windowNibName: "Settings")
     
@@ -35,10 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "Kalphak.LUErar2" in the user's Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "Mark.LUErar2" in the user's Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
         let appSupportURL = urls[urls.count - 1] as NSURL
-        return appSupportURL.URLByAppendingPathComponent("Kalphak.LUErar2")
+        return appSupportURL.URLByAppendingPathComponent("Mark.LUErar2")
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -70,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var coordinator: NSPersistentStoreCoordinator?
         if !shouldFail && (error == nil) {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-            let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("LUErar2.storedata")
+            let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Mark.storedata")
             if coordinator!.addPersistentStoreWithType(NSXMLStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
                 coordinator = nil
             }

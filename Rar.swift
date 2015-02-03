@@ -18,6 +18,8 @@ class Rar: Operation {
         args = [
             "a",
             "-ep1",
+            "-m4",
+            "-o-",
             "-y"
         ]
         

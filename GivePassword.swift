@@ -26,12 +26,19 @@ class GivePassword: NSWindowController {
     
     @IBAction func cancel(sender: AnyObject) {
         delegate?.cancelUnarchiving()
+        NSApp.endSheet(self.window!)
+        self.window!.orderOut(nil)
     }
 
     @IBAction func go(sender: AnyObject) {
-        //delegate?.passwordGiven()
-
+        delegate?.passwordGiven(passwordBoc!.stringValue)
+        NSApp.endSheet(self.window!)
+        self.window!.orderOut(nil)
     }
 
+    func launchSheet () {
+        let appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+        NSApp.beginSheet(self.window!, modalForWindow: appDelegate.window.window!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+    }
     
 }
