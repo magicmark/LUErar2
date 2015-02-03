@@ -72,7 +72,7 @@ class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
     
     func filesDragged(sender: NSDraggingInfo?) {
         
-        // Was going to use enumerateDraggingItemsWithOptions, but I decided I didn't want to kill myself. Swift still isn't great...
+        // Was going to use enumerateDraggingItemsWithOptions, but I decided it wasn't worth it...
         var pasteboard = sender!.draggingPasteboard()
         var allFiles: [String] = pasteboard.propertyListForType(NSFilenamesPboardType) as [String]
         

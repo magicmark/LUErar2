@@ -76,7 +76,7 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         setProgressAmount(0.0)
     }
     
-    func checkForFiles () {
+    func checkForFiles () -> Bool {
         var files = DraggedFiles.sharedInstance.getFiles()
         if files != nil {
             if DraggedFiles.sharedInstance.detectFilesType(files!) == .Unrar {
@@ -90,7 +90,9 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
             } else {
                 askRarPassword(files!)
             }
+            return true
         }
+        return false
     }
     
     func askRarPassword (files: [String]) {
@@ -138,7 +140,11 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
             currentRun = nil
             progressIndicator?.stopAnimation(nil)
         }
-        navDelegate?.goHome() // or maybe there's more stuff to do - check
+        
+        if !checkForFiles() {
+            println("going home")
+            navDelegate?.goHome()
+        }
     }
     
     func reattempt () {
