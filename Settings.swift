@@ -23,10 +23,12 @@ class Settings: NSWindowController {
     
     // View Controllers
     var passwords = Passwords(nibName: "Passwords", bundle: nil)!
+    var archiving = Archiving(nibName: "Archiving", bundle: nil)!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         self.window?.contentViewController?.addChildViewController(passwords)
+        self.window?.contentViewController?.addChildViewController(archiving)
         loadPanel(Panel(rawValue: segmentedControl!.selectedSegment)!)
     }
     
@@ -35,19 +37,23 @@ class Settings: NSWindowController {
     }
     
     func loadSubview(_view: NSView) {
-        if currentView == nil {
-            view?.addSubview(_view)
+        if self.currentView == nil {
+            self.view?.addSubview(_view)
         } else {
-            view?.replaceSubview(currentView!, with: _view)
+            self.view?.replaceSubview(self.currentView!, with: _view)
         }
+        self.currentView = _view
     }
     
     func loadPanel (panel: Panel) {
         switch (panel) {
         case .Passwords:
             loadSubview(passwords.view)
+        case .Archiving:
+            loadSubview(archiving.view)
         default:
             currentView?.removeFromSuperview()
+            self.currentView = nil
         }
     }
     

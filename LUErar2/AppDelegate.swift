@@ -24,6 +24,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+    
+    func application(sender: NSApplication, openFiles filenames: [AnyObject]) {
+        println(filenames)
+    }
+    
+    func application(sender: NSApplication, openFile filename: String) -> Bool {
+        return true
+    }
 
     @IBAction func openPreferences (sender: AnyObject) {
         settings.showWindow(self)

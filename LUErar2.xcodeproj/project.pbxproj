@@ -22,6 +22,9 @@
 		4DAD665F1A800A3700DE60B8 /* DraggedFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */; };
 		4DAD66621A802E7400DE60B8 /* GivePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD66601A802E7400DE60B8 /* GivePassword.swift */; };
 		4DAD66631A802E7400DE60B8 /* GivePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAD66611A802E7400DE60B8 /* GivePassword.xib */; };
+		4DAD668F1A822C4600DE60B8 /* Archiving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD668D1A822C4600DE60B8 /* Archiving.swift */; };
+		4DAD66901A822C4600DE60B8 /* Archiving.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAD668E1A822C4600DE60B8 /* Archiving.xib */; };
+		4DAD66921A823DCD00DE60B8 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD66911A823DCD00DE60B8 /* Preferences.swift */; };
 		4DCEB4251A7EB696001A78A2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB4241A7EB696001A78A2 /* Shell.swift */; };
 		4DCEB4281A7EBEC6001A78A2 /* ArchivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */; };
 		4DCEB4291A7EBEC6001A78A2 /* ArchivingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */; };
@@ -66,6 +69,9 @@
 		4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggedFiles.swift; sourceTree = "<group>"; };
 		4DAD66601A802E7400DE60B8 /* GivePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivePassword.swift; sourceTree = "<group>"; };
 		4DAD66611A802E7400DE60B8 /* GivePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GivePassword.xib; sourceTree = "<group>"; };
+		4DAD668D1A822C4600DE60B8 /* Archiving.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archiving.swift; sourceTree = "<group>"; };
+		4DAD668E1A822C4600DE60B8 /* Archiving.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Archiving.xib; sourceTree = "<group>"; };
+		4DAD66911A823DCD00DE60B8 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		4DCEB4241A7EB696001A78A2 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivingViewController.swift; sourceTree = "<group>"; };
 		4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchivingViewController.xib; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 		4D84030B1A7F4AB60060691E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D8403001A7F48E90060691E /* Settings.swift */,
+				4DAD668D1A822C4600DE60B8 /* Archiving.swift */,
 				4D84030F1A7FE0F60060691E /* ManagePassword.swift */,
 				4D8403041A7F4A600060691E /* Passwords.swift */,
 			);
@@ -138,6 +146,8 @@
 		4D84030C1A7F4ABF0060691E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DAD668E1A822C4600DE60B8 /* Archiving.xib */,
+				4D8403011A7F48E90060691E /* Settings.xib */,
 				4D8403051A7F4A600060691E /* Passwords.xib */,
 				4D8403101A7FE0F60060691E /* ManagePassword.xib */,
 			);
@@ -150,7 +160,6 @@
 				4DAD66601A802E7400DE60B8 /* GivePassword.swift */,
 				4D809CF71A80008D00593E17 /* SelectPassword.swift */,
 				4DCEB4261A7EBEC6001A78A2 /* ArchivingViewController.swift */,
-				4D8403001A7F48E90060691E /* Settings.swift */,
 				4DD4DEDC1A7EAA6100654A13 /* Dropper.swift */,
 				4DD4DED81A7EA2BB00654A13 /* MainWindow.swift */,
 				4DCEB42E1A7F0595001A78A2 /* DragView.swift */,
@@ -161,7 +170,6 @@
 		4DCEB4351A7F1BA7001A78A2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4D8403011A7F48E90060691E /* Settings.xib */,
 				4DCEB4321A7F090F001A78A2 /* MainWindow.xib */,
 				4DD4DED91A7EA2BB00654A13 /* DragView.xib */,
 				4DCEB4271A7EBEC6001A78A2 /* ArchivingViewController.xib */,
@@ -179,6 +187,7 @@
 				4DCEB4371A7F1C8D001A78A2 /* Rar.swift */,
 				4D8402FA1A7F41AC0060691E /* Unrar.swift */,
 				4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */,
+				4DAD66911A823DCD00DE60B8 /* Preferences.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -327,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8403031A7F48E90060691E /* Settings.xib in Resources */,
+				4DAD66901A822C4600DE60B8 /* Archiving.xib in Resources */,
 				4D8402F91A7F40650060691E /* MainMenu.xib in Resources */,
 				4DCEB4331A7F090F001A78A2 /* MainWindow.xib in Resources */,
 				4DD4DED41A7EA1E800654A13 /* rar in Resources */,
@@ -367,7 +377,9 @@
 				4DD4DEB51A7EA15C00654A13 /* AppDelegate.swift in Sources */,
 				4DAD66621A802E7400DE60B8 /* GivePassword.swift in Sources */,
 				4D8403111A7FE0F60060691E /* ManagePassword.swift in Sources */,
+				4DAD66921A823DCD00DE60B8 /* Preferences.swift in Sources */,
 				4DD4DEDA1A7EA2BB00654A13 /* MainWindow.swift in Sources */,
+				4DAD668F1A822C4600DE60B8 /* Archiving.swift in Sources */,
 				4DD4DEB81A7EA15C00654A13 /* LUErar2.xcdatamodeld in Sources */,
 				4D809CF61A7FEDC400593E17 /* PasswordManager.swift in Sources */,
 				4DD4DEDF1A7EAF3C00654A13 /* FancyAnimation.swift in Sources */,

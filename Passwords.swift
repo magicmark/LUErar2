@@ -24,6 +24,7 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView?.focusRingType = .None
         // Do view setup here
         
         managePasswordWindow.delegate = self
