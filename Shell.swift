@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Should be like an abstract class or something
 class Operation  {
     // TODO: tidy all this up, fix the awful method names and move to a classs somewhere
     var args = [String]()
@@ -49,12 +50,12 @@ class Shell: NSObject {
         task.standardError  = stderrPipe
         
         task.standardOutput.fileHandleForReading.readabilityHandler = { file in
-            var data = NSString(data: file.availableData, encoding: NSUTF8StringEncoding)!
+            var data = NSString(data: file.availableData, encoding: NSASCIIStringEncoding)!
             operation.dataAvailable(data)
         }
         
         task.standardError.fileHandleForReading.readabilityHandler = { file in
-            var data = NSString(data: file.availableData, encoding: NSUTF8StringEncoding)!
+            var data = NSString(data: file.availableData, encoding: NSASCIIStringEncoding)!
             operation.errorDataAvailable(data)
         }
         

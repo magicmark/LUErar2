@@ -22,13 +22,15 @@ class Settings: NSWindowController {
     @IBOutlet weak var view: NSView?
     
     // View Controllers
-    var passwords = Passwords(nibName: "Passwords", bundle: nil)!
-    var archiving = Archiving(nibName: "Archiving", bundle: nil)!
+    var passwords   = Passwords(nibName: "Passwords", bundle: nil)!
+    var archiving   = Archiving(nibName: "Archiving", bundle: nil)!
+    var unarchiving = Unarchiving(nibName: "Unarchiving", bundle: nil)!
     
     override func windowDidLoad() {
         super.windowDidLoad()
         self.window?.contentViewController?.addChildViewController(passwords)
         self.window?.contentViewController?.addChildViewController(archiving)
+        self.window?.contentViewController?.addChildViewController(unarchiving)
         loadPanel(Panel(rawValue: segmentedControl!.selectedSegment)!)
     }
     
@@ -51,6 +53,8 @@ class Settings: NSWindowController {
             loadSubview(passwords.view)
         case .Archiving:
             loadSubview(archiving.view)
+        case .Unarchiving:
+            loadSubview(unarchiving.view)
         default:
             currentView?.removeFromSuperview()
             self.currentView = nil

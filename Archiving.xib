@@ -105,7 +105,7 @@
                     </connections>
                 </button>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtC-eU-wh9">
-                    <rect key="frame" x="144" y="38" width="298" height="14"/>
+                    <rect key="frame" x="144" y="39" width="298" height="14"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="None" id="GYR-gf-Dgu">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

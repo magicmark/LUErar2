@@ -34,10 +34,15 @@ class Preferences {
     
     let appDefaults: [NSObject: AnyObject] = [
         // Archiving
-        "compressionAmount"          : 3,
-        "randomArchiveFileName"      : true,
-        "archiveDestinationIsParent" : true,
-        "archiveDestination"         : "None"
+        "compressionAmount"             : 3,
+        "randomArchiveFileName"         : true,
+        "archiveDestinationIsParent"    : true,
+        "archiveDestination"            : "None",
+        // Unarchiving
+        "createFolderForUnarchive"      : true,
+        "unarchiveDestinationIsParent"  : true,
+        "unarchiveDestination"          : "None"
+        
     ]
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -60,6 +65,13 @@ class Preferences {
             potentialValue = defaults.boolForKey("archiveDestinationIsParent")
         case "archiveDestination":
             potentialValue = defaults.stringForKey("archiveDestination")
+        // Unarchiving
+        case "createFolderForUnarchive":
+            potentialValue = defaults.boolForKey("createFolderForUnarchive")
+        case "unarchiveDestinationIsParent":
+            potentialValue = defaults.boolForKey("unarchiveDestinationIsParent")
+        case "archiveDestination":
+            potentialValue = defaults.stringForKey("unarchiveDestination")
         default:
             potentialValue = defaults.stringForKey(preference)
         }
@@ -84,6 +96,13 @@ class Preferences {
             defaults.setBool(preference! as Bool, forKey: "archiveDestinationIsParent")
         case "archiveDestination":
             defaults.setObject(preference as String, forKey: "archiveDestination")
+        // Unarchiving
+        case "createFolderForUnarchive":
+            defaults.setBool(preference! as Bool, forKey: "createFolderForUnarchive")
+        case "unarchiveDestinationIsParent":
+            defaults.setBool(preference! as Bool, forKey: "unarchiveDestinationIsParent")
+        case "unarchiveDestination":
+            defaults.setObject(preference as String, forKey: "unarchiveDestination")
         default:
             defaults.setObject(preference as String, forKey: key)
         }

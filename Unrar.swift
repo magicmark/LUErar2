@@ -14,13 +14,29 @@ class Unrar: Operation {
         super.init(files: [file])
         
         executable = "\(currentExecutionPath)/Contents/Resources/unrar"
+
+        // Get Preferences stuff
+        let destinationFolder = Preferences.sharedInstance.get("unarchiveDestination")! as String
+        
+        let destinationIsParent = (destinationFolder == "None" || Preferences.sharedInstance.get("unarchiveDestinationIsParent")! as Bool)
+
+        let createFolder = Preferences.sharedInstance.get("createFolderForUnarchive")! as Bool
+        
+        var unarchivePath: String = "\(file.stringByDeletingLastPathComponent)/"
+        if !destinationIsParent {
+            unarchivePath = destinationFolder
+        }
+        
+        if createFolder {
+            unarchivePath += "\(file.lastPathComponent.stringByDeletingPathExtension)/"
+        }
         
         args = [
             "e",
             "-y",
             (withPassword != nil) ? "-p\(withPassword!)" : "-p-",
             file,
-            file.stringByDeletingLastPathComponent
+            unarchivePath
         ]
         
     }
@@ -59,20 +75,22 @@ class Unrar: Operation {
     }
     
     func parseCheckPassword (data: String) {
-//        println("dsfdsf")
+        // means there's a password error
+        if data.rangeOfString("Checksum error in the encrypted file") != nil {
+            badPassword = true
+        }
     }
     
     override func dataAvailable (data: String) {
         println("all good- \(data)")
         parsePercentageDone(data)
         parseFiles(data)
-        parseCheckPassword(data)
     }
     
     override func errorDataAvailable(data: String) {
-        if data.rangeOfString("Checksum error in the encrypted file") != nil {
-            badPassword = true
-        }
+        println("hmm")
+        println(data)
+        parseCheckPassword(data)
     }
     
     override func taskEnded() {
