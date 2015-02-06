@@ -8,30 +8,6 @@
 
 import Foundation
 
-// Should be like an abstract class or something
-class Operation  {
-    // TODO: tidy all this up, fix the awful method names and move to a classs somewhere
-    var args = [String]()
-    var files = [String]()
-    var executable = ""
-    let currentPath = NSFileManager.defaultManager().currentDirectoryPath
-    let currentExecutionPath = NSBundle.mainBundle().bundlePath
-    var delegate: ActivityDelegate?
-    func dataAvailable (data: String) { }
-    var shouldReattempt = false
-    func errorDataAvailable (data: String) {
-        println(data)
-    }
-    func taskEnded () {
-        delegate?.complete()
-    }
-    
-    init (files: [String]) {
-        self.files = files
-    }
-    
-}
-
 class Shell: NSObject {
     
     // TODO: messing with shell calls is risky stuff - make sure we're removing references and stuff when operations are finished

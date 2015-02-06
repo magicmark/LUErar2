@@ -148,11 +148,6 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     }
     
     func reattempt () {
-        retryUnrar()
-    }
-    
-    // should this go somewhere else??
-    func retryUnrar () {
         let files: [String] = currentRun!.operation!.files
         let attempt: Int = currentRun!.attempt + 1
         currentRun = nil

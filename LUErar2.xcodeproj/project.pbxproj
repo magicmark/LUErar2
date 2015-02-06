@@ -21,6 +21,7 @@
 		4D84030E1A7F56BE0060691E /* passwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D84030D1A7F56BE0060691E /* passwords.txt */; };
 		4D8403111A7FE0F60060691E /* ManagePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84030F1A7FE0F60060691E /* ManagePassword.swift */; };
 		4D8403121A7FE0F60060691E /* ManagePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8403101A7FE0F60060691E /* ManagePassword.xib */; };
+		4D8F302C1A857FA40004B86A /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8F302B1A857FA40004B86A /* Operation.swift */; };
 		4DAD665F1A800A3700DE60B8 /* DraggedFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */; };
 		4DAD66621A802E7400DE60B8 /* GivePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD66601A802E7400DE60B8 /* GivePassword.swift */; };
 		4DAD66631A802E7400DE60B8 /* GivePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAD66611A802E7400DE60B8 /* GivePassword.xib */; };
@@ -70,6 +71,7 @@
 		4D84030D1A7F56BE0060691E /* passwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = passwords.txt; sourceTree = "<group>"; };
 		4D84030F1A7FE0F60060691E /* ManagePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePassword.swift; sourceTree = "<group>"; };
 		4D8403101A7FE0F60060691E /* ManagePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagePassword.xib; sourceTree = "<group>"; };
+		4D8F302B1A857FA40004B86A /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggedFiles.swift; sourceTree = "<group>"; };
 		4DAD66601A802E7400DE60B8 /* GivePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivePassword.swift; sourceTree = "<group>"; };
 		4DAD66611A802E7400DE60B8 /* GivePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GivePassword.xib; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				4D809CF51A7FEDC400593E17 /* PasswordManager.swift */,
 				4DCEB4241A7EB696001A78A2 /* Shell.swift */,
+				4D8F302B1A857FA40004B86A /* Operation.swift */,
 				4DCEB4371A7F1C8D001A78A2 /* Rar.swift */,
 				4D8402FA1A7F41AC0060691E /* Unrar.swift */,
 				4DAD665E1A800A3700DE60B8 /* DraggedFiles.swift */,
@@ -382,6 +385,7 @@
 				4DCEB4301A7F0595001A78A2 /* DragView.swift in Sources */,
 				4D3F2AB11A8293040029269C /* Unarchiving.swift in Sources */,
 				4DCEB4281A7EBEC6001A78A2 /* ArchivingViewController.swift in Sources */,
+				4D8F302C1A857FA40004B86A /* Operation.swift in Sources */,
 				4DD4DEB51A7EA15C00654A13 /* AppDelegate.swift in Sources */,
 				4DAD66621A802E7400DE60B8 /* GivePassword.swift in Sources */,
 				4D8403111A7FE0F60060691E /* ManagePassword.swift in Sources */,
