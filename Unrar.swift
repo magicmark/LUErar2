@@ -60,6 +60,7 @@ class Unrar: Operation {
     }
     
     override func taskEnded() {
+        // TODO: merge reattempt method into complete by passing true/false param to complete
         if badPassword {
             delegate?.reattempt()
         } else {
