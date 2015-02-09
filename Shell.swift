@@ -19,9 +19,8 @@ class Shell: NSObject {
     init (operation: Operation) {
         super.init()
         
-        //var thread = NSThread(target: self, selector: "ummmmm", object: self)
-        task.launchPath = operation.executable
-        task.arguments  = operation.args
+        task.launchPath = operation.executable!
+        task.arguments  = operation.args!
         task.standardOutput = stdoutPipe
         task.standardError  = stderrPipe
         
@@ -53,6 +52,5 @@ class Shell: NSObject {
         task.terminate()
         resetTaskHandlers()
     }
-    
     
 }

@@ -6,10 +6,12 @@
 //  Copyright (c) 2015 Mark. All rights reserved.
 //
 
+// TODO: more tests
+
 import Cocoa
 import XCTest
 
-class LUErar2Tests: XCTestCase {
+class UnrarTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,9 +23,24 @@ class LUErar2Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func checkPassword() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        var operation = Unrar(file: "dsf", withPassword: "sdf")
+        
+        // Check initially it is false
+        XCTAssert(!operation.badPassword)
+        operation.parseCheckPassword("Checksum error in the encrypted file /Users/mark/Desktop/luerar/LUErar.rar. Corrupt file or wrong password.")
+        // Should now be false
+        XCTAssert(operation.badPassword)
+        operation.parseCheckPassword("i like apples")
+        // Should still be false
+        XCTAssert(operation.badPassword)
+
+        operation = Unrar(file: "dsf", withPassword: "sdf")
+        operation.parseCheckPassword("i like apples")
+        // Should be true
+        XCTAssert(!operation.badPassword)
+        
     }
     
     func testPerformanceExample() {

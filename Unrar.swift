@@ -20,15 +20,14 @@ class Unrar: Operation {
         let destinationIsParent = (destinationFolder == "None" || Preferences.sharedInstance.get("unarchiveDestinationIsParent")! as Bool)
         let createFolder = Preferences.sharedInstance.get("createFolderForUnarchive")! as Bool
 
-        
-        var unarchivePath: String = "\(file.stringByDeletingLastPathComponent)/"
+        destination = "\(file.stringByDeletingLastPathComponent)/"
         
         if !destinationIsParent {
-            unarchivePath = destinationFolder
+            destination = destinationFolder
         }
         
         if createFolder {
-            unarchivePath += "\(file.lastPathComponent.stringByDeletingPathExtension)/"
+            destination! += "\(file.lastPathComponent.stringByDeletingPathExtension)/"
         }
         
         args = [
@@ -36,7 +35,7 @@ class Unrar: Operation {
             "-y",
             (withPassword != nil) ? "-p\(withPassword!)" : "-p-",
             file,
-            unarchivePath
+            destination!
         ]
         
     }
@@ -50,22 +49,13 @@ class Unrar: Operation {
         }
     }
     
-    override func dataAvailable (data: String) {
-        parsePercentageDone(data)
-        parseFiles(data, seatchString: "Extracting")
-    }
-    
     override func errorDataAvailable(data: String) {
         parseCheckPassword(data)
     }
     
     override func taskEnded() {
-        // TODO: merge reattempt method into complete by passing true/false param to complete
-        if badPassword {
-            delegate?.reattempt()
-        } else {
-            delegate?.complete()
-        }
+        delegate?.finishedOperation(badPassword)
+        Notify.sharedInstance.finished(destination!, type: .Unrar)
     }
     
 }

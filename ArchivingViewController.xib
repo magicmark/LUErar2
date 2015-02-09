@@ -6,9 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ArchivingViewController" customModule="LUErar2" customModuleProvider="target">
             <connections>
-                <outlet property="currentFile" destination="9Xh-Xq-v9b" id="Sa1-iQ-bDd"/>
                 <outlet property="progressIndicator" destination="lZx-Xx-ee8" id="t8d-Wg-2Rx"/>
-                <outlet property="progressText" destination="PGE-sm-Qx1" id="4yt-2S-WiH"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -21,7 +19,7 @@
                 <progressIndicator fixedFrame="YES" maxValue="100" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="lZx-Xx-ee8">
                     <rect key="frame" x="119" y="129" width="32" height="32"/>
                 </progressIndicator>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGE-sm-Qx1">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="PGE-sm-Qx1">
                     <rect key="frame" x="85" y="196" width="100" height="52"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="100%" id="QcD-JE-jHb">
                         <font key="font" size="25" name="ComicSansMS-Bold"/>
@@ -42,7 +40,7 @@ Gw
                         </connections>
                     </buttonCell>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Xh-Xq-v9b">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="9Xh-Xq-v9b">
                     <rect key="frame" x="18" y="80" width="234" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Current:" id="ggO-z0-mcn">
                         <font key="font" metaFont="system"/>

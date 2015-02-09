@@ -16,21 +16,22 @@ class Rar: Operation {
         // Get Preferences stuff
         let rarLevel: Int = Preferences.sharedInstance.get("compressionAmount")! as Int
         let doRandomFileName = Preferences.sharedInstance.get("randomArchiveFileName")! as Bool
-        let destinationIsParent = (Preferences.sharedInstance.get("archiveDestination")! == "None" || Preferences.sharedInstance.get("archiveDestinationIsParent")! as Bool)
+        let destinationIsParent = (Preferences.sharedInstance.get("archiveDestination")! == "None" ||
+            Preferences.sharedInstance.get("archiveDestinationIsParent")! as Bool)
         let destinationFolder = Preferences.sharedInstance.get("archiveDestination")! as String
         
         executable = "\(currentExecutionPath)/Contents/Resources/rar"
         
         args = [
-            "a",
-            "-ep1",
-            "-m\(rarLevel)",
-            "-o-",
-            "-y"
+            "a",                // Add files to archive
+            "-ep1",             // Exclude base directory from names
+            "-m\(rarLevel)",    // Set compression level (0-store...3-default...5-maximal)
+            "-o-",              // Set the overwrite mode
+            "-y"                // Assume Yes on all queries
         ]
         
         if password != nil {
-            args.append("-hp\(password!)")
+            args!.append("-hp\(password!)") // Encrypt both file data and headers
         }
         
         var filename = NSUUID().UUIDString
@@ -44,19 +45,16 @@ class Rar: Operation {
         }
         filename += ".rar"
         
-        let fullDestinationFilePath = "\((destinationIsParent) ? files[0].stringByDeletingLastPathComponent : destinationFolder)/\(filename)"
+        destination = "\((destinationIsParent) ? files[0].stringByDeletingLastPathComponent : destinationFolder)/\(filename)"
         
-        args.append(fullDestinationFilePath) // file name
-        args += files // files
+        args!.append(destination!) // file name
+        args! += files // files
         
     }
     
-    override func dataAvailable (data: String) {
-        parsePercentageDone(data)
-        parseFiles(data, seatchString: "Adding")
+    override func taskEnded() {
+        delegate?.finishedOperation(false)
+        Notify.sharedInstance.finished(destination!, type: .Rar)
     }
     
-    override func errorDataAvailable (data: String) {
-        println(data)
-    }
 }

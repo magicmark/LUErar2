@@ -11,8 +11,7 @@ import Cocoa
 protocol ActivityDelegate {
     func setProgressAmount(value: Double)
     func setProgressText(text: String)
-    func complete()
-    func reattempt()
+    func finishedOperation(shouldRetry: Bool)
 }
 
 enum ArchiveType {
@@ -34,7 +33,7 @@ class CurrentRun {
     }
 }
 
-class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPasswordDelegate, AskForPasswordDelegate {
+class ArchivingViewController: NSViewController {
 
     var currentRun: CurrentRun?
 
@@ -47,8 +46,12 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     
     var navDelegate: NavigationDelegate?
     
-    @IBOutlet weak var progressText: NSTextField?
-    @IBOutlet weak var currentFile: NSTextField?
+    // OK, not sure why I had to do this - was getting
+    var progressText: NSTextField?
+    var currentFile: NSTextField?
+//    @IBOutlet weak var progressText: NSTextField!
+//    @IBOutlet weak var currentFile: NSTextField!
+    
     @IBOutlet weak var progressIndicator: NSProgressIndicator?
     
     // Windows
@@ -58,6 +61,10 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        progressText = self.view.viewWithTag(1) as? NSTextField
+        currentFile = self.view.viewWithTag(2) as? NSTextField
+        
         // use usesThreadedAnimation?? TODO: find this out
         progressIndicator?.usesThreadedAnimation = true
         askPassword.delegate = self
@@ -74,6 +81,11 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         progressIndicator?.displayIfNeeded()
         setProgressText("Starting...")
         setProgressAmount(0.0)
+    }
+    
+    func cancelCurrentOperation() {
+        currentRun?.shell?.cancel()
+        finishedOperation(false)
     }
     
     func checkForFiles () -> Bool {
@@ -120,31 +132,8 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
         }
     }
  
-    func setProgressAmount(value: Double) {
-        progressText?.stringValue = "\(Int(value))%"
-        progressIndicator?.doubleValue = value
-        progressIndicator?.displayIfNeeded()
-    }
-    
-    func setProgressText(text: String) {
-        currentFile?.stringValue = text
-    }
-    
     @IBAction func cancel(sender: AnyObject) {
-        currentRun?.shell?.cancel()
-        complete()
-    }
-    
-    func complete () {
-        if currentRun != nil {
-            currentRun = nil
-            progressIndicator?.stopAnimation(nil)
-        }
-        
-        if !checkForFiles() {
-            println("going home")
-            navDelegate?.goHome()
-        }
+        cancelCurrentOperation()
     }
     
     func reattempt () {
@@ -165,8 +154,41 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     func askPasswordForUnrar () {
         givePassword.launchSheet()
     }
+
+}
+
+// MARK - ActivityDelegate
+extension ArchivingViewController: ActivityDelegate {
     
-    // SelectedPasswordDelegate
+    func setProgressAmount(value: Double) {
+        progressText?.stringValue = "\(Int(value))%"
+        progressIndicator?.doubleValue = value
+        progressIndicator?.displayIfNeeded()
+    }
+    
+    func setProgressText(text: String) {
+        currentFile?.stringValue = text
+    }
+    
+    func finishedOperation (shouldRetry: Bool) {
+        if shouldRetry {
+            reattempt()
+        } else {
+            if currentRun != nil {
+                currentRun = nil
+                progressIndicator?.stopAnimation(nil)
+            }
+            
+            if !checkForFiles() {
+                navDelegate?.goHome()
+            }
+        }
+    }
+    
+}
+
+// MARK - SelectedPasswordDelegate
+extension ArchivingViewController: SelectedPasswordDelegate {
     
     func choose (password: String) {
         let trimmed  = password.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
@@ -177,13 +199,16 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
     }
     
     func cancel() {
-        // idk should maybe do something here
+        cancelCurrentOperation()
     }
-    
-    // AskForPasswordDelegate
+
+}
+
+// MARK - AskForPasswordDelegate
+extension ArchivingViewController: AskForPasswordDelegate {
     
     func cancelUnarchiving () {
-        
+        cancelCurrentOperation()
     }
     
     func passwordGiven (password: String) {
@@ -191,4 +216,5 @@ class ArchivingViewController: NSViewController, ActivityDelegate, SelectedPassw
             start(.Unrar, files: filesToUnrarWithPassword!, attempt: attemptNumber, password: password)
         }
     }
+    
 }

@@ -15,6 +15,7 @@ protocol AskForPasswordDelegate {
 
 class GivePassword: NSWindowController {
 
+    // TODO: Fix typo to passwordBox
     @IBOutlet weak var passwordBoc: NSTextField!
     override func windowDidLoad() {
         super.windowDidLoad()

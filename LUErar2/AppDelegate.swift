@@ -26,7 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func application(sender: NSApplication, openFiles filenames: [AnyObject]) {
-        println(filenames)
+        DraggedFiles.sharedInstance.addFiles(filenames as [String])
+        window.startArchiving()
     }
     
     func application(sender: NSApplication, openFile filename: String) -> Bool {

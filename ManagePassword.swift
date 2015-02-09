@@ -23,6 +23,7 @@ class ManagePassword: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
     
+        // TODO:
         // Uuuuuuuch there has to be a better way
         isLoaded = true
         if titleToSet != nil {
@@ -30,9 +31,9 @@ class ManagePassword: NSWindowController {
         }
         
         passwordInput?.focusRingType = .None
-
     
     }
+    
     func setActionButtonTitle(title: String) {
         if isLoaded {
             actionButton?.title = title

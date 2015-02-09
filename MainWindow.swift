@@ -26,13 +26,13 @@ protocol SelectedPasswordDelegate {
     func cancel()
 }
 
-class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
+class MainWindow: NSWindowController {
     
     // Child view controllers
     var dragView    = DragView(nibName: "DragView", bundle: nil)!
     var archiver    = ArchivingViewController(nibName: "ArchivingViewController", bundle: nil)!
 
-    
+    var doingOperation = false
     var currSubviewPointer: NSView?
     
     override func windowDidLoad() {
@@ -45,8 +45,27 @@ class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
         self.window?.contentViewController?.addChildViewController(archiver)
         
         archiver.navDelegate = self
-        
     }
+    
+    func startArchiving () {
+        // Should really do this logic elsewhere?
+        if !doingOperation {
+            // show before we start the archving process? idk
+            dispatch_async(dispatch_get_main_queue(), {
+                self.window?.contentView.replaceSubview(self.currSubviewPointer!, with: self.archiver.view)
+                self.currSubviewPointer = self.archiver.view
+                self.archiver.checkForFiles()
+            })
+            doingOperation = true
+        } else {
+            Notify.sharedInstance.filesAdded()
+        }
+    }
+    
+}
+
+// MARK - NavigationDelegate
+extension MainWindow: NavigationDelegate {
     
     func goHome () {
         dispatch_async(dispatch_get_main_queue(), {
@@ -57,29 +76,21 @@ class MainWindow: NSWindowController, NavigationDelegate, filesDraggedDelegate {
             }
             self.currSubviewPointer = self.dragView.view
         })
+        doingOperation = false
     }
-    
-    func startArchiving () {
-        // show before we start the archving process? idk
-        dispatch_async(dispatch_get_main_queue(), {
-            self.window?.contentView.replaceSubview(self.currSubviewPointer!, with: self.archiver.view)
-            self.currSubviewPointer = self.archiver.view
-            self.archiver.checkForFiles()
-        })
-    }
-    
-    // filesDraggedDelegate
+
+}
+
+// MARK - filesDraggedDelegate
+extension MainWindow: filesDraggedDelegate {
     
     func filesDragged(sender: NSDraggingInfo?) {
-        
         // Was going to use enumerateDraggingItemsWithOptions, but I decided it wasn't worth it...
         var pasteboard = sender!.draggingPasteboard()
         var allFiles: [String] = pasteboard.propertyListForType(NSFilenamesPboardType) as [String]
         
         DraggedFiles.sharedInstance.addFiles(allFiles)
         startArchiving()
-        
     }
-    
 
 }

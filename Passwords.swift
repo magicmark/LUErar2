@@ -13,7 +13,7 @@ protocol PasswordManagerDelegate {
     func editedPassword(position: Int, newPassword: String)
 }
 
-class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, PasswordManagerDelegate {
+class Passwords: NSViewController, NSTableViewDelegate {
 
     // TODO: Add a 'make default' button to move selected password to top of the list
     
@@ -25,26 +25,6 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.focusRingType = .None
-        // Do view setup here
-        
-        managePasswordWindow.delegate = self
-//        
-//        var potentialPasswords = appDelegate.loadPasswords()
-//        if potentialPasswords != nil {
-//            appDelegate.passwords = potentialPasswords!
-//            tableView.reloadData()
-//        }
-
-    }
-    
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return PasswordManager.sharedInstance.passwords.count
-    }
-
-    
-    // I think this is the old way of doing it or something?
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        return PasswordManager.sharedInstance.passwords[row]
     }
     
     @IBAction func addNew(sender: AnyObject) {
@@ -115,7 +95,25 @@ class Passwords: NSViewController, NSTableViewDelegate, NSTableViewDataSource, P
         }
     }
     
-    // PasswordManagerDelegate
+}
+
+// MARK - NSTableViewDataSource
+extension Passwords: NSTableViewDataSource {
+    
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return PasswordManager.sharedInstance.passwords.count
+    }
+    
+    // I think this is the old way of doing it or something?
+    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+        return PasswordManager.sharedInstance.passwords[row]
+    }
+    
+}
+
+
+// MARK - PasswordManagerDelegate {
+extension Passwords: PasswordManagerDelegate {
     
     func addedNewPassword(password: String) {
         if PasswordManager.sharedInstance.addPassword(password) {
