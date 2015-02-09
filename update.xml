@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+  	<title>LUErar2 Changelog</title>
+  	<link>https://magicmark.github.io/LUErar2/update.xml</link>
+  	<description>Most recent changes with links to updates.</description>
+  	<language>en</language>
+      <item>
+        <title>Version 2.1.0</title>
+        <description>Code refactor, added Sparkle (so you probably won't ever read this), and you can drag to icon. And notifications.
+        </description>
+        <pubDate>Mon, 9 Feb 2015 16:27:00 +0000</pubDate>
+        <enclosure url="https://magicmark.github.io/LUErar2/v2.1.0/LUErar2.zip" sparkle:version="2.1.0" length="5241068" type="application/octet-stream" sparkle:dsaSignature="MCwCFBvOovcqUZr0EEINWUh0HYWsewf6AhQqWEltXtbWgwDuCfhazjk1iNRuNw==" />
+      </item>
+  </channel>
+</rss>
