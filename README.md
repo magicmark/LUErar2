@@ -2,6 +2,8 @@
 
 A RAR Archiver/Unarchiver GUI, that has a built in password manager.
 
+![Screenshot](http://i.imgur.com/aHrwmAw.png)
+
 To build, you need to download the rar/unrar executables from here: http://www.rarlab.com (Not including it because licensing)
 
 ### Features
