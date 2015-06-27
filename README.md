@@ -12,5 +12,4 @@ To build, you need to download the rar/unrar executables from here: http://www.r
 * More stuff coming
 
 ### To-Do
-Lots. Check the TODO comments.
-Also, tidy up the project structure.
+- Fix bug where app opened by files being double clicked immedietly crashes app
